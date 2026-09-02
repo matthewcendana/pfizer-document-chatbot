@@ -1,0 +1,154 @@
+{
+  "generated": "2026-09-01T04:22:57",
+  "note": "Reconstructed from results.md. Regenerating 02_evaluation.ipynb overwrites this file.",
+  "architecture": {
+    "flow": "Document Input -> OCR -> Chunking -> Embeddings -> Vector Storage -> Retrieval -> LLM Response",
+    "llm": "Qwen/Qwen2.5-3B-Instruct",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_dim": 384,
+    "vector_store": "FAISS IndexFlatIP (cosine)",
+    "ocr": "Tesseract via pytesseract at 200 DPI",
+    "chunk_size_words": 220,
+    "chunk_overlap_words": 60,
+    "top_k": 4,
+    "routing_confidence_threshold": 0.7,
+    "device": "cuda"
+  },
+  "test_set": {
+    "documents": 4,
+    "digital_files": 2,
+    "scanned_files": 2,
+    "total_pages": 26,
+    "questions": 17,
+    "question_runs": 34,
+    "answerable": 13,
+    "unanswerable_controls": 4
+  },
+  "retrieval": {
+    "k=1": {
+      "queries": 12,
+      "hit_rate": {
+        "Digital": 0.917,
+        "Scanned": 0.917,
+        "Overall": 0.917
+      },
+      "precision_at_k": {
+        "Digital": 0.917,
+        "Scanned": 0.917,
+        "Overall": 0.917
+      },
+      "recall_at_k": {
+        "Digital": 0.917,
+        "Scanned": 0.917,
+        "Overall": 0.917
+      },
+      "mrr": {
+        "Digital": 0.917,
+        "Scanned": 0.917,
+        "Overall": 0.917
+      }
+    },
+    "k=3": {
+      "queries": 12,
+      "hit_rate": {
+        "Digital": 1.0,
+        "Scanned": 1.0,
+        "Overall": 1.0
+      },
+      "precision_at_k": {
+        "Digital": 0.5,
+        "Scanned": 0.556,
+        "Overall": 0.528
+      },
+      "recall_at_k": {
+        "Digital": 0.931,
+        "Scanned": 0.889,
+        "Overall": 0.91
+      },
+      "mrr": {
+        "Digital": 0.944,
+        "Scanned": 0.944,
+        "Overall": 0.944
+      }
+    },
+    "k=5": {
+      "queries": 12,
+      "hit_rate": {
+        "Digital": 1.0,
+        "Scanned": 1.0,
+        "Overall": 1.0
+      },
+      "precision_at_k": {
+        "Digital": 0.3,
+        "Scanned": 0.35,
+        "Overall": 0.325
+      },
+      "recall_at_k": {
+        "Digital": 0.917,
+        "Scanned": 0.917,
+        "Overall": 0.917
+      },
+      "mrr": {
+        "Digital": 0.944,
+        "Scanned": 0.944,
+        "Overall": 0.944
+      }
+    }
+  },
+  "end_to_end": {
+    "answer_accuracy": {
+      "Digital": 0.77,
+      "Scanned": 0.85,
+      "Overall": 0.81
+    },
+    "answer_accuracy_n": 26,
+    "correct_abstention": {
+      "Digital": 1.0,
+      "Scanned": 1.0,
+      "Overall": 1.0
+    },
+    "correct_abstention_n": 8,
+    "citation_validity": {
+      "Digital": 1.0,
+      "Scanned": 1.0,
+      "Overall": 1.0
+    },
+    "citation_correctness": {
+      "Digital": 1.0,
+      "Scanned": 1.0,
+      "Overall": 1.0
+    },
+    "factual_consistency": {
+      "Digital": 0.65,
+      "Scanned": 0.65,
+      "Overall": 0.65
+    },
+    "factual_consistency_note": "Self-judged by the same model that generated the answers; lenient, not an independent audit."
+  },
+  "processing": {
+    "doc_type_classification_recall": {
+      "Digital": 1.0,
+      "Scanned": 1.0,
+      "Overall": 1.0
+    },
+    "files": 4
+  },
+  "system": {
+    "avg_response_time_sec": {
+      "Digital": 4.4,
+      "Scanned": 4.9,
+      "Overall": 4.7
+    },
+    "avg_retrieval_latency_ms": {
+      "Digital": 1003,
+      "Scanned": 1010,
+      "Overall": 1006
+    },
+    "avg_retrieval_latency_note": "Includes the LLM query-routing call; pure FAISS vector search is ~4 ms.",
+    "avg_generation_sec": {
+      "Digital": 3.4,
+      "Scanned": 3.9,
+      "Overall": 3.7
+    }
+  }
+}
