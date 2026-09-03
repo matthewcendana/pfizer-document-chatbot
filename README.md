@@ -1,5 +1,9 @@
 # Pharmaceutical Document Q&A
 
+<p align="center">
+  <img src="docs/ui.jpeg" alt="Ingestion pipeline" width="700">
+</p>
+
 A retrieval-augmented generation pipeline that reads bundled pharmaceutical PDFs, splits them into their constituent documents, and answers plain-English questions with citations to the exact source page.
 
 Built for **Pfizer's AI-Powered Document Insights and Data Extraction Externship**.
